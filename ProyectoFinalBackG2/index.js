@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5050;
 
 app.use("/api", reserverRouter)
 //endpoints de prueba.
-//http://localhost:4000/api/reserver
+//http://localhost:4000/api/reservas
 
 //levantamos en servidor.
 const init = () => {
