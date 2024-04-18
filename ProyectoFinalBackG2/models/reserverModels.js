@@ -4,7 +4,7 @@ import { Schema } from "mongoose";
 //objeto 
 
 const reserverSchema = new Schema({ 
-    email: { //usuario.
+    email: { //usuario
         type: String,
         unique: true, //evita que dos users se registren con un mismo email.
         require: true, //exige la existencia de un email para registrarse.
