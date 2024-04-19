@@ -12,8 +12,7 @@ const reserverSchema = new Schema({
     sucursal: String,
     comensales: Number,
     servicios: String,
-    fecha: Date,
-    hora: Number
+    fecha: Date
 },{versionKey: false})
 
 const reserModels = mongoose.model ("reservas", reserverSchema)
