@@ -7,11 +7,11 @@ const crearReserva = async (req, res) => {
     const { id, email, sucursal, comensales, fecha, servicio } = req.body;
     const reserva = new ReservaModel({
       id,
-      // email,
-      // sucursal,
-      // comensales,
-      // fecha,
-      // servicio
+      email,
+      sucursal,
+      comensales,
+      fecha,
+      servicio
     });
     await reserva.save();
     res.status(201).json({ message: "Reserva creada exitosamente" });
