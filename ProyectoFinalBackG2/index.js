@@ -3,6 +3,8 @@ import "dotenv/config";
 import cors from "cors";
 import userRouter from "./router/userRouter.js";
 import connectDB from "./database/db.js";
+import privateRouter from "./router/private.router.js";
+import comprobacionJwt from "./middleware/comprobacionJwt.js";
 
 const app = express();
 
@@ -12,6 +14,7 @@ const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
 app.use("/api", userRouter);
+app.use("/api", comprobacionJwt,  privateRouter);
 
 const initApp = () => {
     try {

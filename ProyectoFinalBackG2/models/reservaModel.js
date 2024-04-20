@@ -3,7 +3,6 @@ import { Schema } from "mongoose";
 
 const reservasSchema = new Schema(
     {
-        id: Number,
         email: {
             type: String,
             required: true,

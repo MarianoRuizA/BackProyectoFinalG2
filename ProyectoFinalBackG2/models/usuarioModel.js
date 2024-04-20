@@ -3,7 +3,6 @@ import { Schema } from "mongoose";
 
 const usuariosSchema = new Schema(
     {
-        id: Number,
         nombre: String,
         apellido: String,
         email: {
