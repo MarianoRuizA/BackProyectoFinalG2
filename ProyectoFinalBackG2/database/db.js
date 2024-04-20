@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 
-const URI = process.env.MONGO_DB_PROD;
+const URI = process.env.MONGO_URI;
+const DB = process.env.MONGO_DB
 
 const connectDB = async () => {
     try {
-      await mongoose.connect(`${URI}`);
+      await mongoose.connect(`${URI}/${DB}`);
       console.log("Conectado a la base de datos");
     } catch (error) {
       console.log(error);

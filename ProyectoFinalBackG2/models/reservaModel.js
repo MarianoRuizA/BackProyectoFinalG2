@@ -4,14 +4,14 @@ import { Schema } from "mongoose";
 const reservasSchema = new Schema(
     {
         id: Number,
-        email: {
-            type: String,
-            required: true,
-        }, // Necesario??
-        sucursal: String,
-        comensales: Number,
-        fecha: Date,
-        servicio: String,
+        // email: {
+        //     type: String,
+        //     required: true,
+        // }, // Necesario??
+        // sucursal: String,
+        // comensales: Number,
+        // fecha: Date,
+        // servicio: String,
     },
     { versionKey: false }
 );
