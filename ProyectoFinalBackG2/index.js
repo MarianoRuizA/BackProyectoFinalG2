@@ -2,18 +2,16 @@ import express from "express"; //framework
 import "dotenv/config";
 import cors from "cors";
 import reservaRouter from "./router/reservaRouter.js";
-import userRouter from "./router/userRouter.js"
 import connectDB from "./dataBase/db.js";
 
 const app = express();
 app.use(cors());
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 
 //en rutas esta el json.
 app.use(express.json());
 app.use("/api", reservaRouter)
-app.use("/api", userRouter)
 
 const initApp = () => {
     try {
