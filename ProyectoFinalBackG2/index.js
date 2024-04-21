@@ -6,13 +6,13 @@ import userRouter from "./router/userRouter.js"
 import connectDB from "./dataBase/db.js";
 
 const app = express();
-const PORT = process.env.PORT || 8000
-
-
 app.use(cors());
+
+const PORT = process.env.PORT || 8000;
+
 //en rutas esta el json.
 app.use(express.json());
-app.use("/api", reservaRouter);
+app.use("/api", reservaRouter)
 app.use("/api", userRouter)
 
 const initApp = () => {
@@ -25,4 +25,5 @@ const initApp = () => {
         console.log("error12")
     }
 }
-initApp()
+
+initApp();

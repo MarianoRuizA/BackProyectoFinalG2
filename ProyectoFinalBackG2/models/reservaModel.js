@@ -9,9 +9,9 @@ const reservasSchema = new Schema(
             unique: true
         }, // Necesario??
         sucursal: String,
-        comensales: Number,
-        fecha: Date,
         servicio: String,
+        comensales: Number,
+        fecha: Date
     },
     { versionKey: false }
 );
