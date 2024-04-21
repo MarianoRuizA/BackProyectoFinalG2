@@ -2,6 +2,7 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import reservaRouter from "./router/reservaRouter.js";
+import userRouter from "./router/userRouter.js"
 import connectDB from "./database/db.js";
 
 const app = express();
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
 app.use("/api", reservaRouter);
+app.use("/api", userRouter)
 
 const initApp = () => {
     try {
