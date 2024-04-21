@@ -6,7 +6,8 @@ const reservasSchema = new Schema(
         usuario: {
             type: String,
             required: true,
-        }, 
+            unique: true
+        }, // Necesario??
         sucursal: String,
         servicio: String,
         comensales: Number,
