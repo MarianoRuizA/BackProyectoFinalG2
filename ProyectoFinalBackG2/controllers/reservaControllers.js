@@ -4,10 +4,9 @@ import ReservaModel from "../models/reservaModel.js";
 
 const crearReserva = async (req, res) => {
   try {
-    const { id, email, sucursal, comensales, fecha, servicio } = req.body;
+    const { usuario, sucursal, comensales, fecha, servicio } = req.body;
     const reserva = new ReservaModel({
-      id,
-      email,
+      usuario,
       sucursal,
       comensales,
       fecha,
@@ -22,4 +21,15 @@ const crearReserva = async (req, res) => {
   }
 };
 
-export default { crearReserva };
+// getAllReserva
+
+const getAllReserva = async(req, res) => {
+  try {
+      const reservas = await ReservaModel.find();// --> recorre la conexion y trae todas las reservas.
+      res.json(reservas);// --> aqui se guarda todo lo que trae el .find
+  } catch (error) {
+      console.log("errro")
+  }
+};
+
+export default { crearReserva, getAllReserva };

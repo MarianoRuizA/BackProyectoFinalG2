@@ -3,15 +3,15 @@ import { Schema } from "mongoose";
 
 const reservasSchema = new Schema(
     {
-        id: Number,
-        // email: {
-        //     type: String,
-        //     required: true,
-        // }, // Necesario??
-        // sucursal: String,
-        // comensales: Number,
-        // fecha: Date,
-        // servicio: String,
+        usuario: {
+            type: String,
+            required: true,
+            unique: true
+        }, // Necesario??
+        sucursal: String,
+        comensales: Number,
+        fecha: Date,
+        servicio: String,
     },
     { versionKey: false }
 );

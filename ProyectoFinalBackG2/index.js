@@ -1,15 +1,13 @@
 import express from "express"; //framework
 import "dotenv/config";
 import cors from "cors";
-import reserverRouter from "./router/reserverRouter.js";
 import reservaRouter from "./router/reservaRouter.js";
 import userRouter from "./router/userRouter.js"
 import connectDB from "./dataBase/db.js";
 
-
-const app = express(); //se guardan las configuraciones de express.
-
 const app = express();
+const PORT = process.env.PORT || 8000
+
 
 app.use(cors());
 //en rutas esta el json.
@@ -24,7 +22,7 @@ const initApp = () => {
             console.log(`Servidor iniciado en el puerto ${PORT}`);
         });
     } catch (error) {
-        console.log("error")
+        console.log("error12")
     }
 }
 initApp()
