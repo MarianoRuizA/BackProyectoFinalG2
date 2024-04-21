@@ -3,19 +3,17 @@ import { Schema } from "mongoose";
 
 const reservasSchema = new Schema(
     {
-        id: Number,
-        email: {
+        usuario: {
             type: String,
             required: true,
-        }, // Necesario??
-        sucursal: String,
-        comensales: Number,
-        fecha: Date,
-        servicio: String,
+        }, 
+        // sucursal: String,
+        // servicio: String,
+        // comensales: Number
     },
     { versionKey: false }
 );
 
-const ReservaModel = mongoose.model("reservas", reservasSchema);
+const ReservaModel = mongoose.model("Reservas", reservasSchema);
 
 export default ReservaModel;

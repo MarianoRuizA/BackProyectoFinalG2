@@ -2,16 +2,17 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import userRouter from "./router/userRouter.js";
+import reservaRouter from "./router/reservaRouter.js";
 import connectDB from "./database/db.js";
 
 const app = express();
 
 app.use(cors());
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
-app.use("/api", userRouter);
+app.use("/api", reservaRouter)
 
 const initApp = () => {
     try {
@@ -22,6 +23,6 @@ const initApp = () => {
     } catch (error) {
         console.log(error);
     }
-};
+}
 
 initApp();
