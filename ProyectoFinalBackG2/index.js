@@ -2,6 +2,7 @@ import express from "express"; //framework
 import "dotenv/config";
 import cors from "cors";
 import reserverRouter from "./router/reserverRouter.js";
+import reservaRouter from "./router/reservaRouter.js";
 import connectDB from "./dataBase/db.js";
 
 
@@ -14,6 +15,7 @@ app.use(cors());
 //en rutas esta el json.
 app.use(express.json());
 app.use("/api", reserverRouter)
+app.use/"api", reservaRouter)
 
 //endpoints de prueba.
 //http://localhost:4000/api/reservas
@@ -23,10 +25,10 @@ const init = () => {
     try {
         connectDB() //se ejecuta la conexion a la base de datos.
         app.listen(PORT, () => {
-            console.log("servidor levantado desde el puerto 4000");
+            console.log(`Servidor iniciado en el puerto ${PORT}`);
         });
     } catch (error) {
         console.log("error")
     }
 }
-init()
+initApp()
