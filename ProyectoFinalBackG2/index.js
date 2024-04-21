@@ -1,27 +1,34 @@
-import express from "express";
+import express from "express"; //framework
 import "dotenv/config";
 import cors from "cors";
+import reserverRouter from "./router/reserverRouter.js";
 import reservaRouter from "./router/reservaRouter.js";
-import connectDB from "./database/db.js";
+import connectDB from "./dataBase/db.js";
 
-const app = express();
+
+const app = express(); //se guardan las configuraciones de express.
+
+//se llama al port que esta en .env y a su ves se pasa un 2do puerto, si es que el del .env no esta disponible. Finalmente se levanta el servidor.
+const PORT = process.env.PORT || 5050;
 
 app.use(cors());
-
-const PORT = process.env.PORT || 4000;
-
+//en rutas esta el json.
 app.use(express.json());
-app.use("/api", reservaRouter);
+app.use("/api", reserverRouter)
+app.use/"api", reservaRouter)
 
-const initApp = () => {
+//endpoints de prueba.
+//http://localhost:4000/api/reservas
+
+//levantamos en servidor.
+const init = () => {
     try {
-        connectDB();
+        connectDB() //se ejecuta la conexion a la base de datos.
         app.listen(PORT, () => {
             console.log(`Servidor iniciado en el puerto ${PORT}`);
         });
     } catch (error) {
-        console.log(error);
+        console.log("error")
     }
-};
-
-initApp();
+}
+initApp()
