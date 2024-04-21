@@ -1,12 +1,14 @@
 import express from "express"; //framework
 import "dotenv/config";
 import cors from "cors";
+import userRouter from "./router/userRouter.js";
 import reservaRouter from "./router/reservaRouter.js";
 import connectDB from "./dataBase/db.js";
 import privateRouter from "./router/private.router.js";
 import comprobacionJwt from "./middleware/comprobacionJwt.js";
 
 const app = express();
+
 app.use(cors());
 
 const PORT = process.env.PORT || 8080;
@@ -24,7 +26,7 @@ const initApp = () => {
             console.log(`Servidor iniciado en el puerto ${PORT}`);
         });
     } catch (error) {
-        console.log("error12")
+        console.log("error")
     }
 }
 
