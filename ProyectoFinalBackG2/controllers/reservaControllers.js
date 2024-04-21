@@ -1,5 +1,6 @@
 import ReservaModel from "../models/reservaModel.js";
 
+//Eliminar Reserva
 const eliminarReserva = async (req, res) =>{
     try {
         const { id } = req.params
@@ -11,19 +12,8 @@ const eliminarReserva = async (req, res) =>{
     }
 }
 
-const traer = async (req, res) =>
-{
-    try {
-        const reservas = await ReservaModel.find()
-        console.log("holakshdwkfeug", reservas)
-        res.status(200).json(reservas)
-    } catch (error) {
-        console.log(error)
-    }
-}
 
 export default{
-    eliminarReserva, 
-    traer
+    eliminarReserva
 }
 

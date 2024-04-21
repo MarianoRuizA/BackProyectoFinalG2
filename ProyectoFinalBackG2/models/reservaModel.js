@@ -7,13 +7,14 @@ const reservasSchema = new Schema(
             type: String,
             required: true,
         }, 
-        // sucursal: String,
-        // servicio: String,
-        // comensales: Number
+        sucursal: String,
+        servicio: String,
+        comensales: Number,
+        fecha: Date
     },
     { versionKey: false }
 );
 
-const ReservaModel = mongoose.model("Reservas", reservasSchema);
+const ReservaModel = mongoose.model("reservas", reservasSchema);
 
 export default ReservaModel;

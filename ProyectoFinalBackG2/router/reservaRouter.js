@@ -5,7 +5,7 @@ const router = express.Router()
 
 
 router.delete("/reservas/:id", reservaControllers.eliminarReserva)
-router.get("/reservas", reservaControllers.traer)
+
 
 
 export default router
