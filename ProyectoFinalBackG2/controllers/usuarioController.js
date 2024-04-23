@@ -9,6 +9,7 @@ const getAllUsuarios = async (req, res) => {
         const usuarios = await UsuarioModel.find();
         res.status(200).json(usuarios); // OK
     } catch (error) {
+        console.error(error);
         res.status(500).json({ message: "Error interno del servidor" });
     }
 };
@@ -38,6 +39,7 @@ const updateUsuario = async (req, res) => {
         }
         res.status(200).json(usuario); // OK
     } catch (error) {
+        console.error(error);
         res.status(500).json({ message: "Error interno del servidor" });
     }
 };
@@ -52,6 +54,7 @@ const deleteUsuario = async (req, res) => {
         }
         res.status(200).json(usuario); // OK
     } catch (error) {
+        console.error(error);
         res.status(500).json({ message: "Error interno del servidor" });
     }
 };
@@ -73,6 +76,7 @@ const registrarUsuario = async (req, res) => {
         await usuario.save();
         res.status(201).json({ message: "Usuario registrado correctamente" });
     } catch (error) {
+        console.error(error);
         res.status(400).json({ message: "Error al registrar el usuario" });
     }
 };
@@ -109,7 +113,7 @@ const login = async (req, res) => {
         );
         res.status(200).json({ token }); // OK
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(500).json({ message: "Error de servidor" });
     }
 };
