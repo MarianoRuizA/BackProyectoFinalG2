@@ -6,7 +6,6 @@ const reservasSchema = new Schema(
         usuario: {
             type: String,
             required: true,
-            unique: true
         }, 
         sucursal: String,
         servicio: String,
