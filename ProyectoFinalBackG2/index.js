@@ -16,8 +16,8 @@ const PORT = process.env.PORT || 8080;
 //en rutas esta el json.
 app.use(express.json());
 app.use("/api", userRouter);
-app.use("/api", comprobacionJwt,  privateRouter);
 app.use("/api", reservaRouter)
+app.use("/api", comprobacionJwt,  privateRouter);
 
 const initApp = () => {
     try {
