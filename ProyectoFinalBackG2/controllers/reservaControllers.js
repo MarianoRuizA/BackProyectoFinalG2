@@ -15,12 +15,13 @@ const getAllReserva = async (req, res) => {
 // Crear reserva
 const crearReserva = async (req, res) => {
   try {
-    const { usuario, sucursal, comensales, servicio } = req.body;
+    const { usuario, sucursal, servicio, comensales, fecha } = req.body;
     const reserva = new ReservaModel({
       usuario,
       sucursal,
       servicio,
-      comensales
+      comensales,
+      fecha
     });
     await reserva.save();
     res.status(201).json({ message: "Reserva creada exitosamente" });
