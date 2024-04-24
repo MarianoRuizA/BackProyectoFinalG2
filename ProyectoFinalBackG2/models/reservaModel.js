@@ -10,7 +10,7 @@ const reservasSchema = new Schema(
         sucursal: String,
         servicio: String,
         comensales: Number,
-        fecha: Date
+        fecha: String
     },
     { versionKey: false }
 );
