@@ -15,34 +15,58 @@ const getAllUsuarios = async (req, res) => {
 };
 
 // Modificar un usuario
+// const updateUsuario = async (req, res) => {
+//     try {
+//         const { id } = req.params;
+//         const { nombre, apellido, email, contrasenia, isAdmin, isSuspended } = req.body;
+
+//         // Verifica si la contraseña proporcionada ya está cifrada
+//         let contraseniaCifrada = contrasenia;
+//         if (contrasenia && !contrasenia.startsWith('$2a$')) { // Verifica si la contraseña no comienza con el prefijo de bcrypt
+//             const salt = await bcrypt.genSalt(10);
+//             contraseniaCifrada = await bcrypt.hash(contrasenia, salt);
+//         }
+
+//         // Actualiza el usuario en la base de datos
+//         const usuario = await UsuarioModel.findByIdAndUpdate(
+//             id,
+//             { nombre, apellido, email, contrasenia: contraseniaCifrada, isAdmin, isSuspended },
+//             { new: true }
+//         );
+
+//         if (!usuario) {
+//             return res.status(404).json({ message: "Usuario no encontrado" });
+//         }
+//         res.status(200).json(usuario); // OK
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ message: "Error interno del servidor" });
+//     }
+// };
+// Modificar un usuario
 const updateUsuario = async (req, res) => {
     try {
         const { id } = req.params;
-        const { nombre, apellido, email, contrasenia, isAdmin, isSuspended } = req.body;
-
-        // Verifica si la contraseña proporcionada ya está cifrada
-        let contraseniaCifrada = contrasenia;
-        if (contrasenia && !contrasenia.startsWith('$2a$')) { // Verifica si la contraseña no comienza con el prefijo de bcrypt
-            const salt = await bcrypt.genSalt(10);
-            contraseniaCifrada = await bcrypt.hash(contrasenia, salt);
-        }
+        const { nombre, apellido, email, isAdmin, isSuspended } = req.body;
 
         // Actualiza el usuario en la base de datos
         const usuario = await UsuarioModel.findByIdAndUpdate(
             id,
-            { nombre, apellido, email, contrasenia: contraseniaCifrada, isAdmin, isSuspended },
+            { nombre, apellido, email, isAdmin, isSuspended },
             { new: true }
         );
 
         if (!usuario) {
             return res.status(404).json({ message: "Usuario no encontrado" });
         }
+
         res.status(200).json(usuario); // OK
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Error interno del servidor" });
     }
 };
+
 
 // Eliminar un usuario
 const deleteUsuario = async (req, res) => {
