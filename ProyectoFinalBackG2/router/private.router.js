@@ -1,4 +1,6 @@
 import express from "express";
+import usuarioController from "../controllers/usuarioController.js";
+import reservaControllers from '../controllers/reservaControllers.js'
 
 const router = express.Router();
 
