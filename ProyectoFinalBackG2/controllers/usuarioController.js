@@ -136,6 +136,7 @@ const login = async (req, res) => {
                 expiresIn: 86400, // 24 horas en segundos
             }
         );
+        console.log("-> TOKEN CREADO: ", token)
         res.status(200).json({ token }); // OK
     } catch (error) {
         console.error(error);

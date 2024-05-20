@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 
 const comprobacionJwt = (req, res, next) => {
+  console.log("--> REQ:", req)
   const token = req.headers.authorization;
 
   if (!token) {
