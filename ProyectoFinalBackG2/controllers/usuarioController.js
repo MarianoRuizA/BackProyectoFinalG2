@@ -3,53 +3,22 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 
-// Obtener todos los usuarios
 const getAllUsuarios = async (req, res) => {
     try {
         const usuarios = await UsuarioModel.find();
-        res.status(200).json(usuarios); // OK
+        res.status(200).json(usuarios);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Error interno del servidor" });
     }
 };
 
-// Modificar un usuario
-// const updateUsuario = async (req, res) => {
-//     try {
-//         const { id } = req.params;
-//         const { nombre, apellido, email, contrasenia, isAdmin, isSuspended } = req.body;
 
-//         // Verifica si la contraseña proporcionada ya está cifrada
-//         let contraseniaCifrada = contrasenia;
-//         if (contrasenia && !contrasenia.startsWith('$2a$')) { // Verifica si la contraseña no comienza con el prefijo de bcrypt
-//             const salt = await bcrypt.genSalt(10);
-//             contraseniaCifrada = await bcrypt.hash(contrasenia, salt);
-//         }
-
-//         // Actualiza el usuario en la base de datos
-//         const usuario = await UsuarioModel.findByIdAndUpdate(
-//             id,
-//             { nombre, apellido, email, contrasenia: contraseniaCifrada, isAdmin, isSuspended },
-//             { new: true }
-//         );
-
-//         if (!usuario) {
-//             return res.status(404).json({ message: "Usuario no encontrado" });
-//         }
-//         res.status(200).json(usuario); // OK
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ message: "Error interno del servidor" });
-//     }
-// };
-// Modificar un usuario
 const updateUsuario = async (req, res) => {
     try {
         const { id } = req.params;
         const { nombre, apellido, email, isAdmin, isSuspended } = req.body;
 
-        // Actualiza el usuario en la base de datos
         const usuario = await UsuarioModel.findByIdAndUpdate(
             id,
             { nombre, apellido, email, isAdmin, isSuspended },
@@ -60,7 +29,7 @@ const updateUsuario = async (req, res) => {
             return res.status(404).json({ message: "Usuario no encontrado" });
         }
 
-        res.status(200).json(usuario); // OK
+        res.status(200).json(usuario); 
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Error interno del servidor" });
@@ -68,7 +37,6 @@ const updateUsuario = async (req, res) => {
 };
 
 
-// Eliminar un usuario
 const deleteUsuario = async (req, res) => {
     try {
         const { id } = req.params;
@@ -76,14 +44,13 @@ const deleteUsuario = async (req, res) => {
         if (!usuario) {
             return res.status(404).json({ message: "Usuario no encontrado" });
         }
-        res.status(200).json(usuario); // OK
+        res.status(200).json(usuario); 
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Error interno del servidor" });
     }
 };
 
-// Crear/Registrar usuario
 const registrarUsuario = async (req, res) => {
     try {
         const { nombre, apellido, email, contrasenia, isAdmin, isSuspended } = req.body;
@@ -105,7 +72,6 @@ const registrarUsuario = async (req, res) => {
     }
 };
 
-// Login usuario
 const login = async (req, res) => {
     try {
         const { email, contrasenia } = req.body;
@@ -113,7 +79,7 @@ const login = async (req, res) => {
         if (!usuario) {
             return res
                 .status(401)
-                .json({ message: "Usuario y/o Contraseña incorrecto" }); // Unauthorized
+                .json({ message: "Usuario y/o Contraseña incorrecto" }); 
         }
 
         const comparoContra = await bcrypt.compare(contrasenia, usuario.contrasenia);
@@ -123,7 +89,6 @@ const login = async (req, res) => {
                 .json({ message: "Usuario y/o Contraseña incorrecto" });
         }
 
-        // Creo token
         const token = jwt.sign(
             {
                 id: usuario._id,
@@ -133,11 +98,11 @@ const login = async (req, res) => {
             },
             process.env.SECRET_KEY,
             {
-                expiresIn: 86400, // 24 horas en segundos
+                expiresIn: 86400,
             }
         );
         console.log("-> TOKEN CREADO: ", token)
-        res.status(200).json({ token }); // OK
+        res.status(200).json({ token });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Error de servidor" });
